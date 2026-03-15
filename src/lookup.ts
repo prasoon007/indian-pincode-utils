@@ -30,13 +30,17 @@ const districtShardCache = new Map<number, PincodeRecord[]>();
 
 function formatRow(row: any, shard: any): PincodeRecord {
   const pincode = row[0];
+  const officeCoordinates =
+    typeof row[4] === "number" && typeof row[5] === "number"
+      ? ([row[4], row[5]] as [number, number])
+      : null;
 
   return {
     pincode,
     office: officeNames[row[1]],
     district: districts[row[2]],
     state: states[row[3]],
-    coordinates: shard.pincodes[pincode],
+    coordinates: officeCoordinates ?? shard.pincodes[pincode],
   };
 }
 
@@ -112,12 +116,17 @@ export function getCoordinates(
   }
 
   const centroid = shard.pincodes[pin] ?? matchingRecords[0].coordinates;
+  const hasOfficeCoordinates = matchingRecords.some((record) => {
+    const [latA, lngA] = record.coordinates;
+    const [latB, lngB] = centroid;
+    return latA !== latB || lngA !== lngB;
+  });
   const paged = matchingRecords.slice(offset, offset + limit);
 
   return ok({
     centroid,
-    coordinateSource: "centroid",
-    confidence: 0.7,
+    coordinateSource: hasOfficeCoordinates ? "office" : "centroid",
+    confidence: hasOfficeCoordinates ? 0.95 : 0.7,
     total: matchingRecords.length,
     pincodes: paged,
   });

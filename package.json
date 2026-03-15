@@ -38,6 +38,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "generate:data": "node ./scripts/csv-to-json.js",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:fix-esm": "node ./scripts/fix-esm-imports.js",
@@ -50,7 +51,9 @@
     "ngeohash": "^0.6.3"
   },
   "devDependencies": {
-    "typescript": "^5.4.0",
-    "@types/node": "^20.11.0"
+    "@types/ngeohash": "^0.6.8",
+    "@types/node": "^20.11.0",
+    "csv-parser": "^3.2.0",
+    "typescript": "^5.4.0"
   }
 }

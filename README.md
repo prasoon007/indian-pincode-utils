@@ -1,268 +1,152 @@
-# 🇮🇳 Indian Pincode Utils
+# Indian Pincode Utils
 
-Fast **Indian pincode lookup and geospatial utilities** for Node.js and TypeScript.
+Indian pincode lookup and geospatial utilities for Node.js and TypeScript.
 
-This library provides accurate **Indian postal code data** along with powerful utilities for geospatial queries.
+The package provides fast postal lookup, coordinate-based search, distance utilities, and state or district filtering on top of India Post-derived data.
 
-The dataset is derived from **official India Post data** and optimized for fast lookup.
+## Features
 
----
+- Fast pincode lookup with office-level records
+- Coordinates lookup with centroid and office filtering
+- Distance between pincodes and distance matrix generation
+- Nearby and nearest pincode search
+- Polygon-based geospatial filtering
+- Query by state and district with sorting and pagination
+- Office name search with typo-tolerant matching
+- Bulk lookup APIs
+- TypeScript-first API design with structured error codes
 
-# ✨ Features
+## Installation
 
-- ⚡ Fast pincode lookup
-- 📍 Get coordinates of a pincode
-- 📏 Distance between pincodes
-- 🔎 Nearby pincode search
-- 🏙 Query by state or district
-- 📍 Find nearest pincode from coordinates
-- 🗺 Geospatial polygon queries
-- 🧠 Optimized with prefix sharding and geohash indexing
-- 📦 Lightweight dataset (~1MB)
-- 🧾 Full TypeScript support
-
----
-
-# 📦 Installation
-
-```bash id="installcmd"
+```bash
 npm install indian-pincode-utils
 ```
 
-or
+## Quick Start
 
-```bash id="installcmd2"
-yarn add indian-pincode-utils
+```ts
+import { getByPincode, getCoordinates } from "indian-pincode-utils";
+
+console.log(getByPincode("110001"));
+console.log(getCoordinates("515631"));
 ```
 
----
+## API Overview
 
-# 🚀 Quick Example
+### Lookup
 
-```ts id="quickexample"
-import { getByPincode } from "indian-pincode-utils";
-
-const result = getByPincode("110001");
-
-console.log(result);
+```ts
+getByPincode(pin)
+getByPincodes(pins)
+searchOffices(query, options?)
 ```
 
-Output:
+### Coordinates
 
-```json id="quickoutput"
-{
-  "success": true,
-  "data": [
-    {
-      "pincode": "110001",
-      "office": "Connaught Place",
-      "district": "NEW DELHI",
-      "state": "DELHI",
-      "coordinates": [28.6174, 77.2129]
-    }
-  ]
-}
+```ts
+getCoordinates(pin, officeNameOrOptions?)
 ```
 
----
+Examples:
 
-# 📍 Get Coordinates
+```ts
+getCoordinates("515631");
 
-```ts id="getcoords"
-import { getCoordinates } from "indian-pincode-utils";
+getCoordinates("515631", "Peddakotla");
 
-getCoordinates("110001");
-
-getCoordinates("226028", "RASOOLPUR");
-
-getCoordinates("226028", {
-  officeName: "rasoolpur",
+getCoordinates("515631", {
+  officeName: "peddakotla",
   exact: false,
   limit: 5,
 });
 ```
 
-Returns:
+Sample response shape:
 
 ```json
 {
   "success": true,
   "data": {
-    "centroid": [26.86717, 81.002978],
-    "coordinateSource": "centroid",
-    "confidence": 0.7,
-    "total": 8,
+    "centroid": [14.557463, 77.855278],
+    "coordinateSource": "office",
+    "confidence": 0.95,
+    "total": 15,
     "pincodes": [
       {
-        "pincode": "226028",
-        "office": "RASOOLPUR SAADAT BO",
-        "district": "LUCKNOW",
-        "state": "UTTAR PRADESH",
-        "coordinates": [26.86717, 81.002978]
+        "pincode": "515631",
+        "office": "PEDDAKOTLA B.O",
+        "district": "ANANTAPUR",
+        "state": "ANDHRA PRADESH",
+        "coordinates": [14.5689, 77.85624]
       }
     ]
   }
 }
 ```
 
----
+### State and District Queries
 
-# 📏 Distance Between Pincodes
-
-```ts id="distance"
-import { distanceBetweenPincodes } from "indian-pincode-utils";
-
-distanceBetweenPincodes("110001", "400001");
+```ts
+getByState(state, options?)
+getByDistrict(district, options?)
 ```
 
-Returns distance in **kilometers**.
+Options support:
 
----
+- sortBy: pincode | office | district | state
+- sortOrder: asc | desc
+- offset
+- limit
 
-# 🔎 Find Nearby Pincodes
+### Distance and Nearby Search
 
-```ts id="nearby"
-import { getNearbyPincodes, getPincodesNear } from "indian-pincode-utils";
-
-getNearbyPincodes("110001", 10);
-
-getPincodesNear(26.8467, 80.9462, {
-  radiusKm: 20,
-  includeDetails: true,
-  limit: 25,
-});
+```ts
+distanceBetweenPincodes(pin1, pin2);
+distanceMatrix(pins);
+getNearbyPincodes(pin, radiusKm);
+getPincodesNear(lat, lng, options);
+getNearestPincode(lat, lng);
 ```
 
-Returns all pincodes within **10 km radius**.
+### Geospatial Polygon Query
 
----
-
-# 📍 Find Nearest Pincode
-
-```ts id="nearest"
-import { getNearestPincode } from "indian-pincode-utils";
-
-getNearestPincode(28.6139, 77.209);
-```
-
----
-
-# 🗺 Get Pincodes Within Polygon
-
-```ts id="polygon"
-import { getPincodesWithinPolygon } from "indian-pincode-utils";
-
-const polygon = [
-  [28.7, 77.1],
-  [28.7, 77.3],
-  [28.55, 77.3],
-  [28.55, 77.1],
-];
-
+```ts
 getPincodesWithinPolygon(polygon);
 ```
 
-Useful for:
+### Dataset Metadata
 
-- delivery zones
-- geofencing
-- logistics routing
-
----
-
-# 🏙 Query by State
-
-```ts id="state"
-getByState("DELHI");
+```ts
+getDatasetMetadata();
 ```
 
----
+## Error Handling
 
-# 🏘 Query by District
+All error responses include a stable error code in addition to a message.
 
-```ts id="district"
-getByDistrict("NEW DELHI");
-```
+Common codes:
 
----
+- INVALID_PIN
+- INVALID_INPUT
+- PIN_NOT_FOUND
+- OFFICE_NOT_FOUND
+- STATE_NOT_FOUND
+- DISTRICT_NOT_FOUND
+- NO_RESULTS
 
-# 📊 Dataset Source
+## Data and Performance Notes
 
-The dataset is derived from **India Post official postal data**.
+- Data is sharded by pincode prefix for quick lazy loading.
+- Geohash indexing is used for nearby and nearest lookups.
+- Coordinate source is explicit in responses as centroid or office.
 
-Sources include:
-
-- India Post postal circle datasets
-- Government postal code releases
-
-The data is periodically synchronized with government updates.
-
----
-
-# ⚡ Performance
-
-The package is optimized for high performance.
-
-| Feature       | Implementation     |
-| ------------- | ------------------ |
-| Fast lookup   | prefix sharding    |
-| Nearby search | geohash index      |
-| Memory usage  | lazy shard loading |
-| Type safety   | TypeScript types   |
-
----
-
-# 🧩 API
-
-```
-getByPincode(pin)
-
-getCoordinates(pin, officeNameOrOptions?)
-
-searchOffices(query, options?)
-
-getByPincodes(pins)
-
-getByState(state, options?)
-
-getByDistrict(district, options?)
-
-distanceBetweenPincodes(pin1, pin2)
-
-distanceMatrix(pins)
-
-getNearbyPincodes(pin, radiusKm)
-
-getPincodesNear(lat, lng, options)
-
-getNearestPincode(lat, lng)
-
-getPincodesWithinPolygon(polygon)
-
-getDatasetMetadata()
-```
-
-All API errors now include an error `code` for easier handling.
-
----
-
-# 🤝 Contributing
+## Contributing
 
 Contributions are welcome.
 
-If you find incorrect data or want to improve the dataset:
+1. Open an issue with context and sample data.
+2. Submit a pull request with tests or reproduction steps.
 
-1. Open an issue
-2. Submit a pull request
+## License
 
----
-
-# 📜 License
-
-MIT License
-
----
-
-# ⭐ Support
-
-If you find this library useful, consider giving the repository a ⭐ on GitHub.
+MIT

@@ -103,6 +103,8 @@ export type OfficeRow = [
   officeIndex: number,
   districtIndex: number,
   stateIndex: number,
+  latitude?: number,
+  longitude?: number,
 ];
 
 export type OfficeRows = OfficeRow[];
@@ -113,7 +115,7 @@ export type StringDictionary = string[];
 
 export interface DatasetShard {
   pincodes: Record<string, [number, number]>;
-  offices: [string, number, number, number][];
+  offices: OfficeRow[];
   index: Record<string, number[]>;
 }
 
