@@ -7,10 +7,7 @@ export function getPincodesWithinPolygon(
   polygon: Polygon,
 ): ApiResponse<PolygonPincode[]> {
   if (!Array.isArray(polygon) || polygon.length < 3) {
-    return fail(
-      "INVALID_INPUT",
-      "Polygon must contain at least 3 coordinates",
-    );
+    return fail("INVALID_INPUT", "Polygon must contain at least 3 coordinates");
   }
 
   const result: PolygonPincode[] = [];

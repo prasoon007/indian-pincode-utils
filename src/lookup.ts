@@ -40,7 +40,9 @@ function formatRow(row: any, shard: any): PincodeRecord {
   };
 }
 
-function parseRecordOptions(options?: RecordQueryOptions): Required<RecordQueryOptions> {
+function parseRecordOptions(
+  options?: RecordQueryOptions,
+): Required<RecordQueryOptions> {
   return {
     sortBy: options?.sortBy ?? "pincode",
     sortOrder: options?.sortOrder ?? "asc",
@@ -82,12 +84,14 @@ export function getCoordinates(
     return fail("PIN_NOT_FOUND", "Pincode not found");
   }
 
-  const allRecords = rows.map((i: number) => formatRow(shard.offices[i], shard));
+  const allRecords = rows.map((i: number) =>
+    formatRow(shard.offices[i], shard),
+  );
 
   const options: CoordinatesOptions =
     typeof officeNameOrOptions === "string"
       ? { officeName: officeNameOrOptions }
-      : officeNameOrOptions ?? {};
+      : (officeNameOrOptions ?? {});
 
   const query = options.officeName ? normalizeText(options.officeName) : "";
   const exact = options.exact ?? false;
@@ -97,7 +101,9 @@ export function getCoordinates(
   const matchingRecords = query
     ? allRecords.filter((record) => {
         const normalizedOffice = normalizeText(record.office);
-        return exact ? normalizedOffice === query : normalizedOffice.includes(query);
+        return exact
+          ? normalizedOffice === query
+          : normalizedOffice.includes(query);
       })
     : allRecords;
 
@@ -146,12 +152,16 @@ export function getByState(
   }
 
   const normalizedOptions = parseRecordOptions(options);
-  const sorted = sortAndPaginate(stateShardCache.get(stateIndex) ?? [], normalizedOptions, {
-    pincode: (item) => item.pincode,
-    office: (item) => item.office,
-    district: (item) => item.district,
-    state: (item) => item.state,
-  });
+  const sorted = sortAndPaginate(
+    stateShardCache.get(stateIndex) ?? [],
+    normalizedOptions,
+    {
+      pincode: (item) => item.pincode,
+      office: (item) => item.office,
+      district: (item) => item.district,
+      state: (item) => item.state,
+    },
+  );
 
   return ok(sorted);
 }
@@ -220,9 +230,15 @@ export function searchOffices(
 
     const score = includeMatch
       ? Math.max(0.55, normalizedQuery.length / value.length)
-      : Math.max(0.35, 1 - editDistance / Math.max(value.length, normalizedQuery.length));
+      : Math.max(
+          0.35,
+          1 - editDistance / Math.max(value.length, normalizedQuery.length),
+        );
 
-    ranked.push({ office: (officeNames as string[])[index], score: Number(score.toFixed(3)) });
+    ranked.push({
+      office: (officeNames as string[])[index],
+      score: Number(score.toFixed(3)),
+    });
   });
 
   ranked.sort((a, b) => b.score - a.score || a.office.localeCompare(b.office));

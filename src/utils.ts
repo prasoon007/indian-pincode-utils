@@ -63,7 +63,10 @@ export function levenshteinDistance(a: string, b: string): number {
 export function sortAndPaginate<T>(
   items: T[],
   options: RecordQueryOptions,
-  selectors: Record<NonNullable<RecordQueryOptions["sortBy"]>, (item: T) => string>,
+  selectors: Record<
+    NonNullable<RecordQueryOptions["sortBy"]>,
+    (item: T) => string
+  >,
 ): T[] {
   const sortBy = options.sortBy ?? "pincode";
   const sortOrder = options.sortOrder ?? "asc";

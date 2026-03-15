@@ -92,7 +92,11 @@ export function getPincodesNear(
     return fail("INVALID_INPUT", "Invalid coordinates");
   }
 
-  if (!options || typeof options.radiusKm !== "number" || options.radiusKm <= 0) {
+  if (
+    !options ||
+    typeof options.radiusKm !== "number" ||
+    options.radiusKm <= 0
+  ) {
     return fail("INVALID_INPUT", "radiusKm must be a positive number");
   }
 

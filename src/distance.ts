@@ -24,7 +24,9 @@ export function distanceBetweenPincodes(
   return ok(haversine(c1, c2));
 }
 
-export function distanceMatrix(pins: string[]): ApiResponse<DistanceMatrixEntry[]> {
+export function distanceMatrix(
+  pins: string[],
+): ApiResponse<DistanceMatrixEntry[]> {
   if (!Array.isArray(pins) || pins.length < 2) {
     return fail("INVALID_INPUT", "pins must contain at least two values");
   }
