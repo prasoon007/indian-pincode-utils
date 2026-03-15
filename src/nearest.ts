@@ -1,19 +1,22 @@
 import ngeohash from "ngeohash";
 import geohashIndex from "../data/geohash-index.json";
 import { loadShard } from "./dataLoader";
-import { haversine } from "./utils";
+import { createLruCache, fail, haversine, ok } from "./utils";
 import { ApiResponse, NearestPincode } from "./types";
+
+const nearestCache = createLruCache<string, NearestPincode>(300);
 
 export function getNearestPincode(
   lat: number,
   lng: number,
 ): ApiResponse<NearestPincode> {
   if (typeof lat !== "number" || typeof lng !== "number") {
-    return {
-      success: false,
-      error: "Invalid coordinates",
-    };
+    return fail("INVALID_INPUT", "Invalid coordinates");
   }
+
+  const cacheKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+  const cached = nearestCache.get(cacheKey);
+  if (cached) return ok(cached);
 
   const hash = ngeohash.encode(lat, lng, 4);
 
@@ -44,14 +47,9 @@ export function getNearestPincode(
   }
 
   if (!nearest) {
-    return {
-      success: false,
-      error: "No nearby pincode found",
-    };
+    return fail("NO_RESULTS", "No nearby pincode found");
   }
 
-  return {
-    success: true,
-    data: nearest,
-  };
+  nearestCache.set(cacheKey, nearest);
+  return ok(nearest);
 }

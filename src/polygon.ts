@@ -1,15 +1,16 @@
 import { loadShard } from "./dataLoader";
 import { pointInPolygon } from "./geoUtils";
 import { ApiResponse, Polygon, PolygonPincode } from "./types";
+import { fail, ok } from "./utils";
 
 export function getPincodesWithinPolygon(
   polygon: Polygon,
 ): ApiResponse<PolygonPincode[]> {
   if (!Array.isArray(polygon) || polygon.length < 3) {
-    return {
-      success: false,
-      error: "Polygon must contain at least 3 coordinates",
-    };
+    return fail(
+      "INVALID_INPUT",
+      "Polygon must contain at least 3 coordinates",
+    );
   }
 
   const result: PolygonPincode[] = [];
@@ -29,8 +30,5 @@ export function getPincodesWithinPolygon(
     }
   }
 
-  return {
-    success: true,
-    data: result,
-  };
+  return ok(result);
 }

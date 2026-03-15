@@ -40,8 +40,11 @@
   "scripts": {
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
+    "build:fix-esm": "node ./scripts/fix-esm-imports.js",
     "build:copy-data": "node -e \"const fs=require('fs');fs.rmSync('dist/data',{recursive:true,force:true});fs.cpSync('data','dist/data',{recursive:true});\"",
-    "build": "npm run build:cjs && npm run build:esm && npm run build:copy-data"
+    "build": "npm run build:cjs && npm run build:esm && npm run build:fix-esm && npm run build:copy-data",
+    "test": "node ./scripts/smoke-test.js",
+    "benchmark": "node ./scripts/benchmark.js"
   },
   "dependencies": {
     "ngeohash": "^0.6.3"

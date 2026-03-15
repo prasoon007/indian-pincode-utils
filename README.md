@@ -72,6 +72,37 @@ Output:
 import { getCoordinates } from "indian-pincode-utils";
 
 getCoordinates("110001");
+
+getCoordinates("226028", "RASOOLPUR");
+
+getCoordinates("226028", {
+  officeName: "rasoolpur",
+  exact: false,
+  limit: 5,
+});
+```
+
+Returns:
+
+```json
+{
+  "success": true,
+  "data": {
+    "centroid": [26.86717, 81.002978],
+    "coordinateSource": "centroid",
+    "confidence": 0.7,
+    "total": 8,
+    "pincodes": [
+      {
+        "pincode": "226028",
+        "office": "RASOOLPUR SAADAT BO",
+        "district": "LUCKNOW",
+        "state": "UTTAR PRADESH",
+        "coordinates": [26.86717, 81.002978]
+      }
+    ]
+  }
+}
 ```
 
 ---
@@ -91,9 +122,15 @@ Returns distance in **kilometers**.
 # 🔎 Find Nearby Pincodes
 
 ```ts id="nearby"
-import { getNearbyPincodes } from "indian-pincode-utils";
+import { getNearbyPincodes, getPincodesNear } from "indian-pincode-utils";
 
 getNearbyPincodes("110001", 10);
+
+getPincodesNear(26.8467, 80.9462, {
+  radiusKm: 20,
+  includeDetails: true,
+  limit: 25,
+});
 ```
 
 Returns all pincodes within **10 km radius**.
@@ -180,20 +217,32 @@ The package is optimized for high performance.
 ```
 getByPincode(pin)
 
-getCoordinates(pin)
+getCoordinates(pin, officeNameOrOptions?)
 
-getByState(state)
+searchOffices(query, options?)
 
-getByDistrict(district)
+getByPincodes(pins)
+
+getByState(state, options?)
+
+getByDistrict(district, options?)
 
 distanceBetweenPincodes(pin1, pin2)
 
+distanceMatrix(pins)
+
 getNearbyPincodes(pin, radiusKm)
+
+getPincodesNear(lat, lng, options)
 
 getNearestPincode(lat, lng)
 
 getPincodesWithinPolygon(polygon)
+
+getDatasetMetadata()
 ```
+
+All API errors now include an error `code` for easier handling.
 
 ---
 
