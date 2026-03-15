@@ -57,7 +57,8 @@ export function getCoordinates(pin: string): ApiResponse<Coordinates> {
 }
 
 export function getByState(stateName: string): ApiResponse<PincodeRecord[]> {
-  const stateIndex = states.findIndex(
+  const stateNames = states as string[];
+  const stateIndex = stateNames.findIndex(
     (s) => s.toLowerCase() === stateName.toLowerCase(),
   );
 
@@ -86,7 +87,8 @@ export function getByState(stateName: string): ApiResponse<PincodeRecord[]> {
 export function getByDistrict(
   districtName: string,
 ): ApiResponse<PincodeRecord[]> {
-  const districtIndex = districts.findIndex(
+  const districtNames = districts as string[];
+  const districtIndex = districtNames.findIndex(
     (d) => d.toLowerCase() === districtName.toLowerCase(),
   );
 

@@ -1,15 +1,11 @@
-import { DatasetShard } from "./types"
+import { DatasetShard } from "./types";
 
-const cache: Record<string, DatasetShard> = {}
+const cache: Record<string, DatasetShard> = {};
 
 export function loadShard(prefix: string): DatasetShard {
-
-  if(!cache[prefix]){
-
-    cache[prefix] = require(`../data/shards/${prefix}.json`)
-
+  if (!cache[prefix]) {
+    cache[prefix] = require(`../data/shards/${prefix}.json`);
   }
 
-  return cache[prefix]
-
+  return cache[prefix];
 }

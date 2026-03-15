@@ -40,7 +40,8 @@
   "scripts": {
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "build": "npm run build:cjs && npm run build:esm"
+    "build:copy-data": "node -e \"const fs=require('fs');fs.rmSync('dist/data',{recursive:true,force:true});fs.cpSync('data','dist/data',{recursive:true});\"",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:copy-data"
   },
   "dependencies": {
     "ngeohash": "^0.6.3"
