@@ -1,7 +1,3 @@
-import officeNames from "../data/meta/officeNames.json";
-import states from "../data/meta/states.json";
-import districts from "../data/meta/districts.json";
-
 import {
   ApiResponse,
   BulkPincodeLookup,
@@ -13,6 +9,7 @@ import {
   SearchOfficeResult,
 } from "./types";
 import { loadShard } from "./dataLoader";
+import { loadJson } from "./jsonLoader";
 import {
   fail,
   levenshteinDistance,
@@ -21,9 +18,13 @@ import {
   sortAndPaginate,
 } from "./utils";
 
-const normalizedOfficeNames = (officeNames as string[]).map(normalizeText);
-const stateNames = states as string[];
-const districtNames = districts as string[];
+const officeNames = loadJson<string[]>("data/meta/officeNames.json");
+const states = loadJson<string[]>("data/meta/states.json");
+const districts = loadJson<string[]>("data/meta/districts.json");
+
+const normalizedOfficeNames = officeNames.map(normalizeText);
+const stateNames = states;
+const districtNames = districts;
 
 const stateShardCache = new Map<number, PincodeRecord[]>();
 const districtShardCache = new Map<number, PincodeRecord[]>();

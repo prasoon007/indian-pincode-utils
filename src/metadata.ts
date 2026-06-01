@@ -1,15 +1,18 @@
-import states from "../data/meta/states.json";
-import districts from "../data/meta/districts.json";
-import officeNames from "../data/meta/officeNames.json";
 import fs from "fs";
 import path from "path";
 
 import { ApiResponse, DatasetMetadata } from "./types";
 import { ok } from "./utils";
+import { loadJson } from "./jsonLoader";
+
+const states = loadJson<string[]>("data/meta/states.json");
+const districts = loadJson<string[]>("data/meta/districts.json");
+const officeNames = loadJson<string[]>("data/meta/officeNames.json");
 
 function readPackageDetails() {
   const candidatePaths = [
     path.resolve(__dirname, "../../package.json"),
+    path.resolve(__dirname, "../../../package.json"),
     path.resolve(process.cwd(), "package.json"),
   ];
 

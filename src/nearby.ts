@@ -1,6 +1,6 @@
 import ngeohash from "ngeohash";
-import geohashIndex from "../data/geohash-index.json";
 import { loadShard } from "./dataLoader";
+import { loadJson } from "./jsonLoader";
 import { createLruCache, fail, haversine, ok } from "./utils";
 import {
   ApiResponse,
@@ -9,6 +9,8 @@ import {
   PincodesNearOptions,
 } from "./types";
 import { getByPincode } from "./lookup";
+
+const geohashIndex = loadJson<Record<string, string[]>>("data/geohash-index.json");
 
 const nearbyCache = createLruCache<string, NearbyPincode[]>(200);
 

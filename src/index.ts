@@ -5,3 +5,7 @@ export * from "./nearest";
 export * from "./polygon";
 export * from "./metadata";
 export * from "./types";
+export * from "./validation";
+export * from "./shipping";
+export * from "./gst";
+export * from "./autocomplete";

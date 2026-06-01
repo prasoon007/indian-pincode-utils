@@ -1,6 +1,6 @@
 {
   "name": "indian-pincode-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fast Indian pincode lookup with geospatial utilities",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -10,17 +10,51 @@
       "require": "./dist/cjs/index.js",
       "import": "./dist/esm/index.js",
       "types": "./dist/cjs/index.d.ts"
+    },
+    "./mcp": {
+      "require": "./dist/cjs/mcp.js",
+      "import": "./dist/esm/mcp.js",
+      "types": "./dist/cjs/mcp.d.ts"
+    },
+    "./autocomplete": {
+      "require": "./dist/cjs/autocomplete.js",
+      "import": "./dist/esm/autocomplete.js",
+      "types": "./dist/cjs/autocomplete.d.ts"
+    },
+    "./shipping": {
+      "require": "./dist/cjs/shipping.js",
+      "import": "./dist/esm/shipping.js",
+      "types": "./dist/cjs/shipping.d.ts"
+    },
+    "./validation": {
+      "require": "./dist/cjs/validation.js",
+      "import": "./dist/esm/validation.js",
+      "types": "./dist/cjs/validation.d.ts"
+    },
+    "./gst": {
+      "require": "./dist/cjs/gst.js",
+      "import": "./dist/esm/gst.js",
+      "types": "./dist/cjs/gst.d.ts"
     }
+  },
+  "bin": {
+    "pincode-mcp": "./bin/pincode-mcp.js"
   },
   "files": [
     "dist",
-    "data"
+    "data",
+    "bin"
   ],
   "sideEffects": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/indian-pincode"
+    "url": "git+https://github.com/prasoon007/indian-pincode-utils.git"
   },
+  "bugs": {
+    "url": "https://github.com/prasoon007/indian-pincode-utils/issues"
+  },
+  "homepage": "https://github.com/prasoon007/indian-pincode-utils#readme",
+  "author": "prasoon007",
   "keywords": [
     "pincode",
     "india",
@@ -34,7 +68,22 @@
     "logistics",
     "delivery",
     "zipcode-india",
-    "postal-data"
+    "postal-data",
+    "gst",
+    "gst-state-code",
+    "address-validation",
+    "address-autofill",
+    "city-tier",
+    "shipping-zone",
+    "delivery-estimate",
+    "courier",
+    "ecommerce",
+    "serviceability",
+    "autocomplete",
+    "mcp",
+    "model-context-protocol",
+    "ai-tools",
+    "llm-tools"
   ],
   "license": "MIT",
   "scripts": {

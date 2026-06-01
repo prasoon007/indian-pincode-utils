@@ -1,8 +1,10 @@
 import ngeohash from "ngeohash";
-import geohashIndex from "../data/geohash-index.json";
 import { loadShard } from "./dataLoader";
+import { loadJson } from "./jsonLoader";
 import { createLruCache, fail, haversine, ok } from "./utils";
 import { ApiResponse, NearestPincode } from "./types";
+
+const geohashIndex = loadJson<Record<string, string[]>>("data/geohash-index.json");
 
 const nearestCache = createLruCache<string, NearestPincode>(300);
 
