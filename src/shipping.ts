@@ -116,10 +116,7 @@ export function getShippingZone(
     zone = "local";
   } else if (sameState) {
     zone = "regional";
-  } else if (
-    tier1Set.has(from.slice(0, 3)) &&
-    tier1Set.has(to.slice(0, 3))
-  ) {
+  } else if (tier1Set.has(from.slice(0, 3)) && tier1Set.has(to.slice(0, 3))) {
     zone = "metro";
   } else {
     zone = "rest-of-india";
@@ -158,7 +155,8 @@ export function estimateDeliveryDays(
   if (!zoneResult.success) return zoneResult;
 
   const { zone, distanceKm } = zoneResult.data;
-  const factor = options.speedFactor && options.speedFactor > 0 ? options.speedFactor : 1;
+  const factor =
+    options.speedFactor && options.speedFactor > 0 ? options.speedFactor : 1;
   const [minBase, maxBase] = ZONE_DAYS[zone];
 
   // Slight bump for very long hauls

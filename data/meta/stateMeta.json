@@ -1,38 +1,290 @@
 {
-  "ANDHRA PRADESH":                                 { "gstCode": "37", "iso": "IN-AP", "nameLocal": "ఆంధ్రప్రదేశ్",        "script": "Telugu",     "region": "South",     "capital": "Amaravati" },
-  "ARUNACHAL PRADESH":                              { "gstCode": "12", "iso": "IN-AR", "nameLocal": "अरुणाचल प्रदेश",       "script": "Devanagari", "region": "Northeast", "capital": "Itanagar" },
-  "ASSAM":                                          { "gstCode": "18", "iso": "IN-AS", "nameLocal": "অসম",                  "script": "Bengali",    "region": "Northeast", "capital": "Dispur" },
-  "BIHAR":                                          { "gstCode": "10", "iso": "IN-BR", "nameLocal": "बिहार",                "script": "Devanagari", "region": "East",      "capital": "Patna" },
-  "CHHATTISGARH":                                   { "gstCode": "22", "iso": "IN-CT", "nameLocal": "छत्तीसगढ़",             "script": "Devanagari", "region": "Central",   "capital": "Raipur" },
-  "GOA":                                            { "gstCode": "30", "iso": "IN-GA", "nameLocal": "गोंय",                 "script": "Devanagari", "region": "West",      "capital": "Panaji" },
-  "GUJARAT":                                        { "gstCode": "24", "iso": "IN-GJ", "nameLocal": "ગુજરાત",               "script": "Gujarati",   "region": "West",      "capital": "Gandhinagar" },
-  "HARYANA":                                        { "gstCode": "06", "iso": "IN-HR", "nameLocal": "हरियाणा",              "script": "Devanagari", "region": "North",     "capital": "Chandigarh" },
-  "HIMACHAL PRADESH":                               { "gstCode": "02", "iso": "IN-HP", "nameLocal": "हिमाचल प्रदेश",         "script": "Devanagari", "region": "North",     "capital": "Shimla" },
-  "JAMMU AND KASHMIR":                              { "gstCode": "01", "iso": "IN-JK", "nameLocal": "जम्मू और कश्मीर",        "script": "Devanagari", "region": "North",     "capital": "Srinagar/Jammu" },
-  "JHARKHAND":                                      { "gstCode": "20", "iso": "IN-JH", "nameLocal": "झारखंड",               "script": "Devanagari", "region": "East",      "capital": "Ranchi" },
-  "KARNATAKA":                                      { "gstCode": "29", "iso": "IN-KA", "nameLocal": "ಕರ್ನಾಟಕ",             "script": "Kannada",    "region": "South",     "capital": "Bengaluru" },
-  "KERALA":                                         { "gstCode": "32", "iso": "IN-KL", "nameLocal": "കേരളം",                "script": "Malayalam",  "region": "South",     "capital": "Thiruvananthapuram" },
-  "LADAKH":                                         { "gstCode": "38", "iso": "IN-LA", "nameLocal": "लद्दाख़",               "script": "Devanagari", "region": "North",     "capital": "Leh" },
-  "MADHYA PRADESH":                                 { "gstCode": "23", "iso": "IN-MP", "nameLocal": "मध्य प्रदेश",           "script": "Devanagari", "region": "Central",   "capital": "Bhopal" },
-  "MAHARASHTRA":                                    { "gstCode": "27", "iso": "IN-MH", "nameLocal": "महाराष्ट्र",            "script": "Devanagari", "region": "West",      "capital": "Mumbai" },
-  "MANIPUR":                                        { "gstCode": "14", "iso": "IN-MN", "nameLocal": "মণিপুর",               "script": "Bengali",    "region": "Northeast", "capital": "Imphal" },
-  "MEGHALAYA":                                      { "gstCode": "17", "iso": "IN-ML", "nameLocal": "मेघालय",               "script": "Devanagari", "region": "Northeast", "capital": "Shillong" },
-  "MIZORAM":                                        { "gstCode": "15", "iso": "IN-MZ", "nameLocal": "मिज़ोरम",              "script": "Devanagari", "region": "Northeast", "capital": "Aizawl" },
-  "NAGALAND":                                       { "gstCode": "13", "iso": "IN-NL", "nameLocal": "नागालैंड",              "script": "Devanagari", "region": "Northeast", "capital": "Kohima" },
-  "ODISHA":                                         { "gstCode": "21", "iso": "IN-OR", "nameLocal": "ଓଡ଼ିଶା",                "script": "Odia",       "region": "East",      "capital": "Bhubaneswar" },
-  "PUNJAB":                                         { "gstCode": "03", "iso": "IN-PB", "nameLocal": "ਪੰਜਾਬ",                 "script": "Gurmukhi",   "region": "North",     "capital": "Chandigarh" },
-  "RAJASTHAN":                                      { "gstCode": "08", "iso": "IN-RJ", "nameLocal": "राजस्थान",              "script": "Devanagari", "region": "North",     "capital": "Jaipur" },
-  "SIKKIM":                                         { "gstCode": "11", "iso": "IN-SK", "nameLocal": "सिक्किम",               "script": "Devanagari", "region": "Northeast", "capital": "Gangtok" },
-  "TAMIL NADU":                                     { "gstCode": "33", "iso": "IN-TN", "nameLocal": "தமிழ்நாடு",             "script": "Tamil",      "region": "South",     "capital": "Chennai" },
-  "TELANGANA":                                      { "gstCode": "36", "iso": "IN-TG", "nameLocal": "తెలంగాణ",               "script": "Telugu",     "region": "South",     "capital": "Hyderabad" },
-  "TRIPURA":                                        { "gstCode": "16", "iso": "IN-TR", "nameLocal": "ত্রিপুরা",              "script": "Bengali",    "region": "Northeast", "capital": "Agartala" },
-  "UTTAR PRADESH":                                  { "gstCode": "09", "iso": "IN-UP", "nameLocal": "उत्तर प्रदेश",          "script": "Devanagari", "region": "North",     "capital": "Lucknow" },
-  "UTTARAKHAND":                                    { "gstCode": "05", "iso": "IN-UT", "nameLocal": "उत्तराखण्ड",            "script": "Devanagari", "region": "North",     "capital": "Dehradun" },
-  "WEST BENGAL":                                    { "gstCode": "19", "iso": "IN-WB", "nameLocal": "পশ্চিমবঙ্গ",            "script": "Bengali",    "region": "East",      "capital": "Kolkata" },
-  "ANDAMAN AND NICOBAR ISLANDS":                    { "gstCode": "35", "iso": "IN-AN", "nameLocal": "अंडमान और निकोबार द्वीप समूह", "script": "Devanagari", "region": "Islands", "capital": "Port Blair" },
-  "CHANDIGARH":                                     { "gstCode": "04", "iso": "IN-CH", "nameLocal": "चंडीगढ़",               "script": "Devanagari", "region": "North",     "capital": "Chandigarh" },
-  "THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU":   { "gstCode": "26", "iso": "IN-DH", "nameLocal": "दादरा और नगर हवेली और दमन और दीव", "script": "Devanagari", "region": "West", "capital": "Daman" },
-  "DELHI":                                          { "gstCode": "07", "iso": "IN-DL", "nameLocal": "दिल्ली",                "script": "Devanagari", "region": "North",     "capital": "New Delhi" },
-  "LAKSHADWEEP":                                    { "gstCode": "31", "iso": "IN-LD", "nameLocal": "ലക്ഷദ്വീപ്",             "script": "Malayalam",  "region": "Islands",   "capital": "Kavaratti" },
-  "PUDUCHERRY":                                     { "gstCode": "34", "iso": "IN-PY", "nameLocal": "புதுச்சேரி",            "script": "Tamil",      "region": "South",     "capital": "Puducherry" }
+  "ANDHRA PRADESH": {
+    "gstCode": "37",
+    "iso": "IN-AP",
+    "nameLocal": "ఆంధ్రప్రదేశ్",
+    "script": "Telugu",
+    "region": "South",
+    "capital": "Amaravati"
+  },
+  "ARUNACHAL PRADESH": {
+    "gstCode": "12",
+    "iso": "IN-AR",
+    "nameLocal": "अरुणाचल प्रदेश",
+    "script": "Devanagari",
+    "region": "Northeast",
+    "capital": "Itanagar"
+  },
+  "ASSAM": {
+    "gstCode": "18",
+    "iso": "IN-AS",
+    "nameLocal": "অসম",
+    "script": "Bengali",
+    "region": "Northeast",
+    "capital": "Dispur"
+  },
+  "BIHAR": {
+    "gstCode": "10",
+    "iso": "IN-BR",
+    "nameLocal": "बिहार",
+    "script": "Devanagari",
+    "region": "East",
+    "capital": "Patna"
+  },
+  "CHHATTISGARH": {
+    "gstCode": "22",
+    "iso": "IN-CT",
+    "nameLocal": "छत्तीसगढ़",
+    "script": "Devanagari",
+    "region": "Central",
+    "capital": "Raipur"
+  },
+  "GOA": {
+    "gstCode": "30",
+    "iso": "IN-GA",
+    "nameLocal": "गोंय",
+    "script": "Devanagari",
+    "region": "West",
+    "capital": "Panaji"
+  },
+  "GUJARAT": {
+    "gstCode": "24",
+    "iso": "IN-GJ",
+    "nameLocal": "ગુજરાત",
+    "script": "Gujarati",
+    "region": "West",
+    "capital": "Gandhinagar"
+  },
+  "HARYANA": {
+    "gstCode": "06",
+    "iso": "IN-HR",
+    "nameLocal": "हरियाणा",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Chandigarh"
+  },
+  "HIMACHAL PRADESH": {
+    "gstCode": "02",
+    "iso": "IN-HP",
+    "nameLocal": "हिमाचल प्रदेश",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Shimla"
+  },
+  "JAMMU AND KASHMIR": {
+    "gstCode": "01",
+    "iso": "IN-JK",
+    "nameLocal": "जम्मू और कश्मीर",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Srinagar/Jammu"
+  },
+  "JHARKHAND": {
+    "gstCode": "20",
+    "iso": "IN-JH",
+    "nameLocal": "झारखंड",
+    "script": "Devanagari",
+    "region": "East",
+    "capital": "Ranchi"
+  },
+  "KARNATAKA": {
+    "gstCode": "29",
+    "iso": "IN-KA",
+    "nameLocal": "ಕರ್ನಾಟಕ",
+    "script": "Kannada",
+    "region": "South",
+    "capital": "Bengaluru"
+  },
+  "KERALA": {
+    "gstCode": "32",
+    "iso": "IN-KL",
+    "nameLocal": "കേരളം",
+    "script": "Malayalam",
+    "region": "South",
+    "capital": "Thiruvananthapuram"
+  },
+  "LADAKH": {
+    "gstCode": "38",
+    "iso": "IN-LA",
+    "nameLocal": "लद्दाख़",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Leh"
+  },
+  "MADHYA PRADESH": {
+    "gstCode": "23",
+    "iso": "IN-MP",
+    "nameLocal": "मध्य प्रदेश",
+    "script": "Devanagari",
+    "region": "Central",
+    "capital": "Bhopal"
+  },
+  "MAHARASHTRA": {
+    "gstCode": "27",
+    "iso": "IN-MH",
+    "nameLocal": "महाराष्ट्र",
+    "script": "Devanagari",
+    "region": "West",
+    "capital": "Mumbai"
+  },
+  "MANIPUR": {
+    "gstCode": "14",
+    "iso": "IN-MN",
+    "nameLocal": "মণিপুর",
+    "script": "Bengali",
+    "region": "Northeast",
+    "capital": "Imphal"
+  },
+  "MEGHALAYA": {
+    "gstCode": "17",
+    "iso": "IN-ML",
+    "nameLocal": "मेघालय",
+    "script": "Devanagari",
+    "region": "Northeast",
+    "capital": "Shillong"
+  },
+  "MIZORAM": {
+    "gstCode": "15",
+    "iso": "IN-MZ",
+    "nameLocal": "मिज़ोरम",
+    "script": "Devanagari",
+    "region": "Northeast",
+    "capital": "Aizawl"
+  },
+  "NAGALAND": {
+    "gstCode": "13",
+    "iso": "IN-NL",
+    "nameLocal": "नागालैंड",
+    "script": "Devanagari",
+    "region": "Northeast",
+    "capital": "Kohima"
+  },
+  "ODISHA": {
+    "gstCode": "21",
+    "iso": "IN-OR",
+    "nameLocal": "ଓଡ଼ିଶା",
+    "script": "Odia",
+    "region": "East",
+    "capital": "Bhubaneswar"
+  },
+  "PUNJAB": {
+    "gstCode": "03",
+    "iso": "IN-PB",
+    "nameLocal": "ਪੰਜਾਬ",
+    "script": "Gurmukhi",
+    "region": "North",
+    "capital": "Chandigarh"
+  },
+  "RAJASTHAN": {
+    "gstCode": "08",
+    "iso": "IN-RJ",
+    "nameLocal": "राजस्थान",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Jaipur"
+  },
+  "SIKKIM": {
+    "gstCode": "11",
+    "iso": "IN-SK",
+    "nameLocal": "सिक्किम",
+    "script": "Devanagari",
+    "region": "Northeast",
+    "capital": "Gangtok"
+  },
+  "TAMIL NADU": {
+    "gstCode": "33",
+    "iso": "IN-TN",
+    "nameLocal": "தமிழ்நாடு",
+    "script": "Tamil",
+    "region": "South",
+    "capital": "Chennai"
+  },
+  "TELANGANA": {
+    "gstCode": "36",
+    "iso": "IN-TG",
+    "nameLocal": "తెలంగాణ",
+    "script": "Telugu",
+    "region": "South",
+    "capital": "Hyderabad"
+  },
+  "TRIPURA": {
+    "gstCode": "16",
+    "iso": "IN-TR",
+    "nameLocal": "ত্রিপুরা",
+    "script": "Bengali",
+    "region": "Northeast",
+    "capital": "Agartala"
+  },
+  "UTTAR PRADESH": {
+    "gstCode": "09",
+    "iso": "IN-UP",
+    "nameLocal": "उत्तर प्रदेश",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Lucknow"
+  },
+  "UTTARAKHAND": {
+    "gstCode": "05",
+    "iso": "IN-UT",
+    "nameLocal": "उत्तराखण्ड",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Dehradun"
+  },
+  "WEST BENGAL": {
+    "gstCode": "19",
+    "iso": "IN-WB",
+    "nameLocal": "পশ্চিমবঙ্গ",
+    "script": "Bengali",
+    "region": "East",
+    "capital": "Kolkata"
+  },
+  "ANDAMAN AND NICOBAR ISLANDS": {
+    "gstCode": "35",
+    "iso": "IN-AN",
+    "nameLocal": "अंडमान और निकोबार द्वीप समूह",
+    "script": "Devanagari",
+    "region": "Islands",
+    "capital": "Port Blair"
+  },
+  "CHANDIGARH": {
+    "gstCode": "04",
+    "iso": "IN-CH",
+    "nameLocal": "चंडीगढ़",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "Chandigarh"
+  },
+  "THE DADRA AND NAGAR HAVELI AND DAMAN AND DIU": {
+    "gstCode": "26",
+    "iso": "IN-DH",
+    "nameLocal": "दादरा और नगर हवेली और दमन और दीव",
+    "script": "Devanagari",
+    "region": "West",
+    "capital": "Daman"
+  },
+  "DELHI": {
+    "gstCode": "07",
+    "iso": "IN-DL",
+    "nameLocal": "दिल्ली",
+    "script": "Devanagari",
+    "region": "North",
+    "capital": "New Delhi"
+  },
+  "LAKSHADWEEP": {
+    "gstCode": "31",
+    "iso": "IN-LD",
+    "nameLocal": "ലക്ഷദ്വീപ്",
+    "script": "Malayalam",
+    "region": "Islands",
+    "capital": "Kavaratti"
+  },
+  "PUDUCHERRY": {
+    "gstCode": "34",
+    "iso": "IN-PY",
+    "nameLocal": "புதுச்சேரி",
+    "script": "Tamil",
+    "region": "South",
+    "capital": "Puducherry"
+  }
 }

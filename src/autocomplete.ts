@@ -1,5 +1,9 @@
 import { getByPincode } from "./lookup";
-import { isValidPincode, autofillAddress, AutofilledAddress } from "./validation";
+import {
+  isValidPincode,
+  autofillAddress,
+  AutofilledAddress,
+} from "./validation";
 import { loadShard } from "./dataLoader";
 import { loadJson } from "./jsonLoader";
 
@@ -29,7 +33,10 @@ export interface AutocompleteController {
   subscribe(listener: () => void): () => void;
 }
 
-function buildSuggestions(query: string, limit: number): AutocompleteSuggestion[] {
+function buildSuggestions(
+  query: string,
+  limit: number,
+): AutocompleteSuggestion[] {
   // Suggestion strategy: if 6 digits, exact lookup; if 3-5 digits, prefix scan
   if (/^\d{6}$/.test(query)) {
     const res = getByPincode(query);

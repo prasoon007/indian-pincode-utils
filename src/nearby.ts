@@ -10,7 +10,9 @@ import {
 } from "./types";
 import { getByPincode } from "./lookup";
 
-const geohashIndex = loadJson<Record<string, string[]>>("data/geohash-index.json");
+const geohashIndex = loadJson<Record<string, string[]>>(
+  "data/geohash-index.json",
+);
 
 const nearbyCache = createLruCache<string, NearbyPincode[]>(200);
 

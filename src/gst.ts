@@ -11,7 +11,9 @@ export interface StateMetaEntry {
   capital: string;
 }
 
-const meta = loadJson<Record<string, StateMetaEntry>>("data/meta/stateMeta.json");
+const meta = loadJson<Record<string, StateMetaEntry>>(
+  "data/meta/stateMeta.json",
+);
 
 const byCode: Record<string, string> = {};
 for (const [name, entry] of Object.entries(meta)) {
@@ -46,7 +48,9 @@ export function getStateByCode(code: string): ApiResponse<string> {
   return ok(name);
 }
 
-export function getStateMeta(state: string): ApiResponse<StateMetaEntry & { name: string }> {
+export function getStateMeta(
+  state: string,
+): ApiResponse<StateMetaEntry & { name: string }> {
   const key = resolveStateKey(state);
   if (!key) return fail("STATE_NOT_FOUND", "State not found");
   return ok({ name: key, ...meta[key] });

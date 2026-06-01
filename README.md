@@ -15,11 +15,11 @@ The package provides fast postal lookup, coordinate-based search, distance utili
 - Office name search with typo-tolerant matching
 - Bulk lookup APIs
 - TypeScript-first API design with structured error codes
-- **One-call address auto-fill and address validation** *(v1.1.0)*
-- **City tier, shipping zone, and delivery-day estimation** *(v1.1.0)*
-- **GST state codes, ISO 3166-2, and local-language state names** *(v1.1.0)*
-- **Framework-agnostic pincode autocomplete controller** *(v1.1.0)*
-- **Built-in MCP (Model Context Protocol) server for LLM agents** *(v1.1.0)*
+- **One-call address auto-fill and address validation** _(v1.1.0)_
+- **City tier, shipping zone, and delivery-day estimation** _(v1.1.0)_
+- **GST state codes, ISO 3166-2, and local-language state names** _(v1.1.0)_
+- **Framework-agnostic pincode autocomplete controller** _(v1.1.0)_
+- **Built-in MCP (Model Context Protocol) server for LLM agents** _(v1.1.0)_
 
 ## Installation
 
@@ -129,7 +129,7 @@ getDatasetMetadata();
 
 The following modules were introduced in **v1.1.0**. They are exported from the root entry and also available as subpath imports for better tree-shaking.
 
-### Address validation and auto-fill *(v1.1.0)*
+### Address validation and auto-fill _(v1.1.0)_
 
 ```ts
 import {
@@ -162,7 +162,7 @@ autofillAddress("110001");
 // }
 ```
 
-### Shipping, city tier, and delivery estimates *(v1.1.0)*
+### Shipping, city tier, and delivery estimates _(v1.1.0)_
 
 ```ts
 import {
@@ -190,7 +190,7 @@ estimateDeliveryDays("110001", "400001", { speedFactor: 0.5 });
 
 Zones are classified as `local`, `regional`, `metro`, `rest-of-india`, or `special` (NE states, J&K, Ladakh, A&N, Lakshadweep).
 
-### GST state codes and local-language names *(v1.1.0)*
+### GST state codes and local-language names _(v1.1.0)_
 
 ```ts
 import {
@@ -202,9 +202,9 @@ import {
 } from "indian-pincode-utils";
 // or: from "indian-pincode-utils/gst";
 
-getStateCode("Maharashtra");      // { data: "27" }
-getStateByCode("27");              // { data: "MAHARASHTRA" }
-getStateLocalName("Tamil Nadu");   // { data: { nameLocal: "தமிழ்நாடு", script: "Tamil" } }
+getStateCode("Maharashtra"); // { data: "27" }
+getStateByCode("27"); // { data: "MAHARASHTRA" }
+getStateLocalName("Tamil Nadu"); // { data: { nameLocal: "தமிழ்நாடு", script: "Tamil" } }
 getStateMeta("Karnataka");
 // { gstCode: "29", iso: "IN-KA", nameLocal: "ಕರ್ನಾಟಕ", script: "Kannada",
 //   region: "South", capital: "Bengaluru" }
@@ -212,7 +212,7 @@ getStateMeta("Karnataka");
 
 Covers all 28 states and 8 union territories with GST state codes, ISO 3166-2 codes, capital, region, and native-script name.
 
-### Pincode autocomplete *(v1.1.0)*
+### Pincode autocomplete _(v1.1.0)_
 
 A framework-agnostic controller that works with React, Vue, Svelte, or vanilla JS via a subscribe/notify model.
 
@@ -236,7 +236,7 @@ ctrl.getStatus(); // "idle" | "loading" | "ready" | "no-results" | "invalid"
 await ctrl.select("560001"); // returns the full autofilled address
 ```
 
-### MCP server for LLM agents *(v1.1.0)*
+### MCP server for LLM agents _(v1.1.0)_
 
 An MCP (Model Context Protocol) server is bundled so AI agents (Claude Desktop, VS Code MCP clients, etc.) can answer Indian-address questions out of the box. Zero external dependencies.
 
@@ -268,7 +268,7 @@ Example VS Code / Claude Desktop config:
 
 The server exposes 22 tools, including `get_by_pincode`, `autofill_address`, `validate_address`, `estimate_delivery_days`, `shipping_zone`, `city_tier`, `state_gst_code`, `nearby_pincodes`, and `nearest_pincode`.
 
-### Subpath exports *(v1.1.0)*
+### Subpath exports _(v1.1.0)_
 
 For optimal tree-shaking:
 

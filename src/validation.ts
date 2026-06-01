@@ -5,13 +5,55 @@ import { getStateMeta } from "./gst";
 import { getCityTier, isServiceable } from "./shipping";
 
 const PINCODE_REGION: Record<string, { region: string; states: string[] }> = {
-  "1": { region: "Northern", states: ["Delhi", "Haryana", "Punjab", "Himachal Pradesh", "Jammu and Kashmir", "Ladakh", "Chandigarh"] },
+  "1": {
+    region: "Northern",
+    states: [
+      "Delhi",
+      "Haryana",
+      "Punjab",
+      "Himachal Pradesh",
+      "Jammu and Kashmir",
+      "Ladakh",
+      "Chandigarh",
+    ],
+  },
   "2": { region: "Northern", states: ["Uttar Pradesh", "Uttarakhand"] },
-  "3": { region: "Western", states: ["Rajasthan", "Gujarat", "Dadra and Nagar Haveli and Daman and Diu"] },
-  "4": { region: "Western", states: ["Maharashtra", "Madhya Pradesh", "Chhattisgarh", "Goa"] },
-  "5": { region: "Southern", states: ["Andhra Pradesh", "Telangana", "Karnataka"] },
-  "6": { region: "Southern", states: ["Kerala", "Tamil Nadu", "Puducherry", "Lakshadweep"] },
-  "7": { region: "Eastern", states: ["West Bengal", "Odisha", "Arunachal Pradesh", "Nagaland", "Manipur", "Mizoram", "Tripura", "Meghalaya", "Assam", "Sikkim", "Andaman and Nicobar Islands"] },
+  "3": {
+    region: "Western",
+    states: [
+      "Rajasthan",
+      "Gujarat",
+      "Dadra and Nagar Haveli and Daman and Diu",
+    ],
+  },
+  "4": {
+    region: "Western",
+    states: ["Maharashtra", "Madhya Pradesh", "Chhattisgarh", "Goa"],
+  },
+  "5": {
+    region: "Southern",
+    states: ["Andhra Pradesh", "Telangana", "Karnataka"],
+  },
+  "6": {
+    region: "Southern",
+    states: ["Kerala", "Tamil Nadu", "Puducherry", "Lakshadweep"],
+  },
+  "7": {
+    region: "Eastern",
+    states: [
+      "West Bengal",
+      "Odisha",
+      "Arunachal Pradesh",
+      "Nagaland",
+      "Manipur",
+      "Mizoram",
+      "Tripura",
+      "Meghalaya",
+      "Assam",
+      "Sikkim",
+      "Andaman and Nicobar Islands",
+    ],
+  },
   "8": { region: "Eastern", states: ["Bihar", "Jharkhand"] },
   "9": { region: "Army Postal Service", states: ["APS"] },
 };
@@ -32,7 +74,8 @@ export interface PincodeRegionInfo {
 }
 
 export function getPincodeRegion(pin: string): ApiResponse<PincodeRegionInfo> {
-  if (!isValidPincode(pin)) return fail("INVALID_PIN", "Invalid pincode format");
+  if (!isValidPincode(pin))
+    return fail("INVALID_PIN", "Invalid pincode format");
   const entry = PINCODE_REGION[pin[0]];
   return ok({
     pincode: pin,
@@ -92,8 +135,12 @@ export function validateAddress(
   const expectedDistrict = records[0].district;
   const expectedOffices = records.map((r) => r.office);
 
-  const stateMatch = address.state ? fuzzyEqual(address.state, expectedState) : true;
-  const districtMatch = address.district ? fuzzyEqual(address.district, expectedDistrict) : true;
+  const stateMatch = address.state
+    ? fuzzyEqual(address.state, expectedState)
+    : true;
+  const districtMatch = address.district
+    ? fuzzyEqual(address.district, expectedDistrict)
+    : true;
   const cityMatch = address.city
     ? expectedOffices.some((o) => fuzzyEqual(address.city as string, o, 3)) ||
       fuzzyEqual(address.city, expectedDistrict, 3)
@@ -101,13 +148,19 @@ export function validateAddress(
 
   const warnings: string[] = [];
   if (address.state && !stateMatch) {
-    warnings.push(`State "${address.state}" does not match pincode (expected ${expectedState})`);
+    warnings.push(
+      `State "${address.state}" does not match pincode (expected ${expectedState})`,
+    );
   }
   if (address.district && !districtMatch) {
-    warnings.push(`District "${address.district}" does not match pincode (expected ${expectedDistrict})`);
+    warnings.push(
+      `District "${address.district}" does not match pincode (expected ${expectedDistrict})`,
+    );
   }
   if (address.city && !cityMatch) {
-    warnings.push(`City "${address.city}" not found among offices of this pincode`);
+    warnings.push(
+      `City "${address.city}" not found among offices of this pincode`,
+    );
   }
 
   return ok({
@@ -139,7 +192,8 @@ export interface AutofilledAddress {
 }
 
 export function autofillAddress(pin: string): ApiResponse<AutofilledAddress> {
-  if (!isValidPincode(pin)) return fail("INVALID_PIN", "Invalid pincode format");
+  if (!isValidPincode(pin))
+    return fail("INVALID_PIN", "Invalid pincode format");
 
   const lookup = getByPincode(pin);
   if (!lookup.success) return lookup;
